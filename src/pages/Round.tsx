@@ -3,7 +3,7 @@ import './Round.css';
 import guss from '../assets/guss.png';
 import gussTapped from '../assets/guss_tapped.png';
 import { useParams, Link } from 'react-router-dom';
-import { getRound } from '../api';
+import { getRound, tapRound } from '../api';
 import { useAuth } from '../context/AuthContext';
 
 const GUSS_TAPPED_TIME_MS = 100;
@@ -117,7 +117,7 @@ export default function Round() {
     if (status !== 'active') return;
 
     // POST tap
-    fetch(`/api/rounds/${roundId}/tap`, { method: 'POST', credentials: 'include' });
+    tapRound(roundId);
 
     // local score
     const newTaps = taps + 1;

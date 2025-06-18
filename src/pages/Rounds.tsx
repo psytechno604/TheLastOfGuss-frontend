@@ -10,7 +10,7 @@ export default function Rounds() {
   const [showOverlay, setShowOverlay] = useState(false);
   const [startInput, setStartInput] = useState('');
   const [startError, setStartError] = useState('');
-  const { state: { username }, dispatch } = useAuth();
+  const { state: { username } } = useAuth();
   
   useEffect(() => {
     setIsAdmin(username === 'admin');

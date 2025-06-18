@@ -48,6 +48,13 @@ export async function getRound(id: string) {
   return res.json();
 }
 
+export async function tapRound(roundId: string): Promise<void> {
+  await fetch(`/api/rounds/${roundId}/tap`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+}
+
 export function getStatusName(status: string): string {
   switch (status) {
     case 'waiting':
