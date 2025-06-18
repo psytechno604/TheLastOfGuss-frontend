@@ -20,10 +20,6 @@ html, body, #root {
   border-bottom: 1px dashed white;
   color: white;
   padding: 0.5rem;
-  a {
-    color: white;
-    text-decoration: none;
-  }
 }
 
 .goose-container {

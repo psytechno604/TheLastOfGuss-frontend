@@ -42,6 +42,10 @@
   border: 1px dashed white;
   padding: 0.7rem;
   margin-bottom: 1rem;
+  a {
+    color: black;
+    font-size: medium;
+  }
 }
 
 .overlay {

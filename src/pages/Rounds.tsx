@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getRounds, createRound, getStatusName } from '../api';
 import { useAuth } from '../context/AuthContext';
 import './Rounds.css';
@@ -11,7 +11,8 @@ export default function Rounds() {
   const [startInput, setStartInput] = useState('');
   const [startError, setStartError] = useState('');
   const { state: { username } } = useAuth();
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsAdmin(username === 'admin');
   }, [username]);
@@ -23,6 +24,7 @@ export default function Rounds() {
   return (
     <div className="rounds-page">
       <div className="rounds-header" onClick={() => setShowOverlay(false)}>
+        <span><Link to={'/'}>Перелогиниться</Link></span>
         <span>Список раундов</span>
         <span>{username}</span>
       </div>
@@ -51,7 +53,7 @@ export default function Rounds() {
       <div className="rounds-list">
         {rounds.map((round) => (
           <div key={round.id} className="round-box">
-            <p><b>•</b> Round ID: <Link to={`/rounds/${round.id}`}>{round.id}</Link></p>
+            <p><b>•</b><Link to={`/rounds/${round.id}`}>{round.id}</Link></p>
             <p>Start: {new Date(round.startAt).toLocaleString()}</p>
             <p>End: {new Date(round.endAt).toLocaleString()}</p>
             <p>Статус: {getStatusName(round.status)}</p>
@@ -83,11 +85,16 @@ export default function Rounds() {
                     return;
                   }
 
-                  await createRound({ startAt: startAt.toISOString() });
+                  const created = await createRound({ startAt: startAt.toISOString() });
                   setShowOverlay(false);
                   setStartInput('');
-                  const updated = await getRounds();
-                  setRounds(updated);
+
+                  if (isAdmin && created?.id) {
+                    navigate(`/rounds/${created.id}`);
+                  } else {
+                    const updated = await getRounds();
+                    setRounds(updated);
+                  }
                 } catch (e) {
                   setStartError('Ошибка при создании раунда');
                 }
