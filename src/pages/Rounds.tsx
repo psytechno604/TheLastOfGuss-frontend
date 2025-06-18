@@ -1,44 +1,29 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getRounds, createRound, getWhoAmI } from '../api';
+import { getRounds, createRound, getStatusName } from '../api';
+import { useAuth } from '../context/AuthContext';
 import './Rounds.css';
 
 export default function Rounds() {
   const [rounds, setRounds] = useState<any[]>([]);
-  const [username, setUsername] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [startInput, setStartInput] = useState('');
   const [startError, setStartError] = useState('');
+  const { state: { username }, dispatch } = useAuth();
+  
+  useEffect(() => {
+    setIsAdmin(username === 'admin');
+  }, [username]);
 
   useEffect(() => {
-    loadData();
+    getRounds().then(setRounds)
   }, []);
-
-  async function loadData() {
-    const [roundsData, user] = await Promise.all([getRounds(), getWhoAmI()]);
-    setRounds(roundsData);
-    setUsername(user.username);
-    setIsAdmin(user.username === 'admin');
-  }
-
-  function getStatusName(status: string) {
-    switch (status) {
-      case 'active':
-        return 'Активен';
-      case 'cooldown':
-        return 'Cooldown';
-      case 'waiting':
-        return 'Запланирован';
-      default:
-        return 'Неизвестен';
-    }
-  }
 
   return (
     <div className="rounds-page">
       <div className="rounds-header" onClick={() => setShowOverlay(false)}>
-        <span>Список РАУНДОВ</span>
+        <span>Список раундов</span>
         <span>{username}</span>
       </div>
 

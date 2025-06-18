@@ -47,3 +47,18 @@ export async function getRound(id: string) {
   if (!res.ok) throw new Error(`Failed to fetch round ${id}`);
   return res.json();
 }
+
+export function getStatusName(status: string): string {
+  switch (status) {
+    case 'waiting':
+      return 'Ожидание';
+    case 'cooldown':
+      return 'Ожидание перезарядки';
+    case 'active':
+      return 'Активный';
+    case 'finished':
+      return 'Завершён';
+    default:
+      return 'Неизвестный статус';
+  }
+}

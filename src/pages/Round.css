@@ -1,0 +1,64 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.round-frame {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+.round-header {
+  height: 28px;
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed white;
+  color: white;
+  padding: 0.5rem;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.goose-container {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed black;
+}
+
+.info-block {
+  align-items: center;
+  justify-content: center;
+}
+
+.goose-img {
+  width: 350px;
+  height: 350px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.round-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: monospace;
+}
+
+.round-table td {
+  padding: 2px 8px;
+}
+
+.round-table td.value {
+  text-align: right;
+  white-space: nowrap;
+}

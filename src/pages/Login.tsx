@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api';
+import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
 export default function Login() {
@@ -10,6 +11,7 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState(false);
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
+  const { dispatch } = useAuth();
 
   const handleLogin = async () => {
     setLoginError('');
@@ -25,6 +27,7 @@ export default function Login() {
     }
     try {
       await login(username, password);
+      dispatch({ type: 'setUser', username });
       navigate('/rounds');
     } catch (err: any) {
       if (err.status === 401) {
