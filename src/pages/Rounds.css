@@ -1,0 +1,112 @@
+.rounds-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}
+
+.rounds-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #2d2d2d;
+  border-bottom: 1px dashed white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.rounds-controls {
+  padding: 0.5rem 1rem;
+  background-color: #2d2d2d;
+  border-bottom: 1px dashed white;
+}
+
+.rounds-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.create-round-button {
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  font-family: monospace;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+}
+
+.round-box {
+  border: 1px dashed white;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 3.2rem; /* ниже header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-content {
+  background: #222;
+  padding: 1rem;
+  border: 1px solid white;
+  font-family: monospace;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  color: white;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  width: 1.5rem;
+  height: 3rem;
+}
+
+.submit-button {
+  padding: 0.3rem;
+  font-family: monospace;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+input[type="datetime-local"] {
+  font-family: monospace;
+  padding: 0.2rem;
+  border: 1px solid white;
+  background: #111;
+  color: white;
+}
+
+input.error {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,58 @@
+:root {
+  --input-font-size: 1.1rem;
+  --input-height: 3rem;
+  --input-padding: 1rem;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Стили для кастомной кнопки */
+button {
+  font-size: 1.1rem;
+  height: 3.5rem;       /* Чуть выше инпутов */
+  padding: 0 2rem;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;          /* Чтобы занимала всю ширину как инпуты */
+  box-sizing: border-box;
+}
+button:hover {
+  background: #444;     /* Эффект при наведении */
+}
+button:active {
+  transform: scale(0.98); /* Легкое нажатие */
+}
+
+/* Глобальные стили для всех инпутов с классом custom-input */
+input {
+  font-size: 1.5rem;
+  height: 3rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0; /* Сбрасываем margin */
+}
+
+/* Для фокуса (опционально) */
+input:focus {
+  outline: none;
+  border-color: #646cff; /* Пример цвета */
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+.error {
+  border-color: red;
+  color: red;
+}
