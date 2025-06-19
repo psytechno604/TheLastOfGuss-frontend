@@ -27,6 +27,7 @@ export default function Login() {
     }
     try {
       await login(username, password);
+      dispatch({ type: 'clearUser' });
       dispatch({ type: 'setUser', username });
       navigate('/rounds');
     } catch (err: any) {
